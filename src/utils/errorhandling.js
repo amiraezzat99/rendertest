@@ -9,7 +9,6 @@ export const asyncHandler = (API) => {
 
 export const globalResponse = (err, req, res, next) => {
   if (err) {
-    console.log(req.validationErrors)
     if (req.validationErrors) {
       return res
         .status(err['cause'] || 500)

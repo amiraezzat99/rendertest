@@ -20,7 +20,6 @@ export const isAuth = () => {
           token: splitedToken,
           signature: process.env.SIGN_IN_TOKEN_SECRET,
         })
-        console.log({decodedData})
         const findUser = await userModel.findById(
           decodedData._id,
           'email userName role',
@@ -55,9 +54,6 @@ export const isAuth = () => {
               }),
             )
           }
-
-          // user.token = userToken
-          // await user.save()
           await userModel.findOneAndUpdate(
             { token: splitedToken },
             { token: userToken },
@@ -67,7 +63,6 @@ export const isAuth = () => {
         return next(new Error('invalid token', { cause: 500 }))
       }
     } catch (error) {
-      console.log(error)
       next(new Error('catch error in auth', { cause: 500 }))
     }
   }

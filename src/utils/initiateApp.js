@@ -29,5 +29,5 @@ export const initiateApp = (app, express) => {
 
   app.use(globalResponse)
 
-  app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+  app.listen(port, () => console.log(`Example app listening on port ${port} tessst!`))
 }

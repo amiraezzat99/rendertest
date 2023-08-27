@@ -199,36 +199,7 @@ export const getProductsByTitle = async (req, res, next) => {
   res.status(200).json({ message: 'Done', productsc })
 }
 
-// break 9:55
-
 export const getAllProdwithFilter = async (req, res, next) => {
-  // pagination
-  // sort
-  // select
-  // search
-  // filters
-  // console.log(req.query)
-  // const products = await productModel.find().sort(req.query.sort.replaceAll(',',' '))
-  // const products = await productModel.find().select(req.query.select.replaceAll(',',' '))
-  // const productsc = await productModel
-  // .find({
-  //   $or: [
-  //     { title: { $regex: req.query.searchKey, $options: 'i' } },
-  //     { desc: { $regex: req.query.searchKey, $options: 'i' } },
-  //   ],
-  // })
-  // const queryInstance = { ...req.query }
-  // const execludedKeys = ['page', 'size', 'sort', 'select', 'search']
-  // execludedKeys.forEach((key) => delete queryInstance[key])
-  // // console.log(queryInstance)
-  // const queryFilter = JSON.parse(
-  //   JSON.stringify(queryInstance).replace(
-  //     /gt|gte|lt|lte|in|nin|eq|neq|regex/g,
-  //     (operator) => `$${operator}`,
-  //   ),
-  // )
-  // const products = productModel.find(queryFilter) // mongooseQuery
-  // const data = await products
 
   const apiFeaturesInstance = new ApiFeatures(productModel.find(), req.query)
     .sort()
@@ -239,8 +210,3 @@ export const getAllProdwithFilter = async (req, res, next) => {
 
   res.status(200).json({ message: 'Done', data })
 }
-
-// desc
-// asc
-
-// gt|gte|lt|lte|in|nin|eq|neq|regex   =>$op

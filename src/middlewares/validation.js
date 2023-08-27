@@ -9,10 +9,6 @@ const validationObjectId = (value, helper) => {
   return Types.ObjectId.isValid(value)
     ? true
     : helper.message('invalid objectId')
-  // if (Types.ObjectId.isValid(value)) {
-  //   return true
-  // }
-  // return helper.message('invalid objectId')
 }
 export const generalFields = {
   email: joi
@@ -38,10 +34,7 @@ export const validationCoreFunction = (schema) => {
         const validationResult = schema[key].validate(req[key], {
           abortEarly: false,
         }) // error
-        console.log(validationResult.error)
         if (validationResult.error) {
-          console.log(validationResult.error)
-          // validationErrorArr = [...validationResult.error.details]
           validationErrorArr.push(validationResult.error.details)
         }
       }

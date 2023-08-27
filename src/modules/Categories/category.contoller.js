@@ -60,7 +60,6 @@ export const updateCategory = async (req, res, next) => {
   const { _id } = req.authUser
   const { categoryId } = req.params
   const { name } = req.body
-  // console.log()
   // get category by id
   const category = await categoryModel.findOne({
     _id: categoryId,
