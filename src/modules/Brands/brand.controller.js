@@ -41,6 +41,7 @@ export const addBrand = async (req, res, next) => {
     categoryId,
     subCategoryId,
     customId,
+    createdBy: req.authUser._id,
   }
   const dbBrand = await brandModel.create(brandObject)
   if (!dbBrand) {

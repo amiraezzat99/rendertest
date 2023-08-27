@@ -65,6 +65,7 @@ export const addProduct = async (req, res, next) => {
     brandId,
     Images,
     customId,
+    createdBy: req.authUser._id,
   }
 
   const product = await productModel.create(productObject)
@@ -200,7 +201,6 @@ export const getProductsByTitle = async (req, res, next) => {
 }
 
 export const getAllProdwithFilter = async (req, res, next) => {
-
   const apiFeaturesInstance = new ApiFeatures(productModel.find(), req.query)
     .sort()
     // .pagination()

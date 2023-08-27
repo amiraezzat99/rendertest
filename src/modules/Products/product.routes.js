@@ -6,9 +6,11 @@ import { multerCloudFunction } from '../../services/multerCloud.js'
 import { allowedExtensions } from '../../utils/allowedExtensions.js'
 import * as validators from './product.validationSchemas.js'
 import { validationCoreFunction } from '../../middlewares/validation.js'
+import { isAuth } from '../../middlewares/auth.js'
 
 router.post(
   '/',
+  isAuth(),
   multerCloudFunction(allowedExtensions.Image).array('image', 3),
   validationCoreFunction(validators.addProductSchema),
   asyncHandler(pc.addProduct),
