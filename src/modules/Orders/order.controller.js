@@ -128,7 +128,7 @@ export const createOrder = async (req, res, next) => {
     date: orderDB.createdAt,
     orderCode,
   }
-  //   console.log(path.resolve(`./Files/${orderCode}.pdf`))
+  console.log(`${orderCode}.pdf`)
   await createInvoice(invoice, `${orderCode}.pdf`)
   await sendEmailService({
     to: req.authUser.email,
